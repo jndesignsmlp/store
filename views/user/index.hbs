@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Gallry Search Filter</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Alata|Josefin+Sans|Maven+Pro&display=swap" rel="stylesheet" />
+</head>
+<script>
+  $(document).ready(function () {
+    $("#myinput").on("keyup", function () {
+      var value = $(this).val().toLowerCase();
+      $("#card div").filter(function () {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+      });
+    });
+  });
+</script>
+
+<body>
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-12 text-center">
+          <h2>V K STORE</h2>
+        </div>
+      </div>
+      <div class="row pt-4">
+        <div class="col-md-12 col-12">
+          <input id="myinput" type="text" placeholder="Search..." class="form-control" /><br /><br />
+        </div>
+      </div>
+    </div>
+  </section>
+    <div class="container" id="portfolio">
+      <div class="row" >
+        {{#each products}}
+        <div class="col-md-3 col-6" id="card">
+          <div class="card" id="card">
+            <p class="offer">{{this.Offer}}%offer</p>
+            <img class="card-img-top" src="/productimages/{{this._id}}.jpg" alt="Card image cap">
+            <div class="card-body">
+              <h4 class="card-title">{{this.Name}}</h4>
+              <h4 class="subtitle">{{this.Description}}kg</h4>
+              <p class="product-price">&#x20b9; {{this.Offerprice}} </p>
+              <p class="product-price">&#x20b9; {{this.Price}}</p>
+              <p class="endtitle">Additional Home Delivery</p>
+              <p class="delivery">1 KILOMEETER FREE</p>
+            </div>
+          </div>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+
+
+</body>
+
+</html>
+<link rel="stylesheet" href="/assets/style.css">
